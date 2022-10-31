@@ -13,4 +13,12 @@ describe "New author page", type: :feature do
       expect(page).to have_field('author[last_name]')
       expect(page).to have_field('author[homepage]')
     end
+
+    it "should save the author when data is submitted" do
+      visit new_author_path
+      page.fill_in 'author[last_name]', with: 'Dijkstra'
+      page.fill_in 'author[first_name]', with: 'Horst'
+      page.fill_in 'author[homepage]', with: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
+      find('input[type="submit"]').click
+    end
  end
