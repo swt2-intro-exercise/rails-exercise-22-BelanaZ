@@ -16,4 +16,17 @@
             author = Author.new(:first_name => first_name, :last_name => last_name, :homepage => homepage)
             expect(author.name).to eq("#{first_name} #{last_name}")
         end
+
+        it "should validate author with a last name that is not empty" do
+            @alan = FactoryBot.create :author
+            expect(@alan).to be_valid
+        end
+
+        it "should not validate author with a last name that is not empty"do
+            first_name = 'Elton'
+            last_name = ''
+            homepage = 'http://wikipedia.org/Elton'
+            author = Author.new(:first_name => first_name, :last_name => last_name, :homepage => homepage)
+            expect(@author).to_not be_valid
+        end
     end
