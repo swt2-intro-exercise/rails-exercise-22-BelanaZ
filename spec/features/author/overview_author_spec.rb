@@ -14,4 +14,10 @@ describe "Author index page", :type => :feature do
         visit authors_path
         expect(page).to have_css('table tr', count: Author.count + 1)
     end
+
+    it "should have a table with the headings Name and Homepage" do
+        visit authors_path
+        expect(page).to have_css('table th', text: 'Name')
+        expect(page).to have_css('table th', text: 'Homepage')
+    end
 end
