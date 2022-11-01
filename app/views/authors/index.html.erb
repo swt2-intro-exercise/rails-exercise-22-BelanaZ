@@ -10,6 +10,7 @@
   <% @authors.each do |author| %>
     <tr>
       <td><%= author.name %></td>
+      <td><%= author.homepage %></td>
       <td><%= link_to 'Show', author_path(author) %></td>
     </tr>
   <% end %>

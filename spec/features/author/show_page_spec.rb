@@ -11,5 +11,6 @@ describe "Showing author page", type: :feature do
         visit authors_path(@alan)
         expect(page).to have_text('Alan')
         expect(page).to have_text('Turing')
+        expect(page).to have_text('http://wikipedia.de/alan_turing')
     end
  end
