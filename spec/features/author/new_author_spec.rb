@@ -25,5 +25,14 @@ describe "New author page", type: :feature do
     it "should have a link to go to index page" do
       visit new_author_path
       expect(page).to have_link 'Back', href: authors_path
-      end
+    end
+
+    it "should display 'error' after invalid input" do
+      visit new_author_path
+      page.fill_in 'author[last_name]', with: ''
+      page.fill_in 'author[first_name]', with: 'Sabine'
+      page.fill_in 'author[homepage]', with: 'https://google.de'
+      find('input[type="submit"]').click
+      expect(page).to have_text 'error'
+    end
  end
