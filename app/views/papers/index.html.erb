@@ -10,6 +10,7 @@
     </p>
 
      <p><%= link_to 'Edit', edit_paper_path(paper) %></p>
+     <p><%= link_to 'Delete', paper_path(paper), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></p>
   <% end %>
 </div>
 
