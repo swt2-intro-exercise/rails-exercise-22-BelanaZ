@@ -26,6 +26,24 @@ RSpec.describe "papers/index", type: :view do
 
   it "has Edit button" do
     visit papers_path
-    expect(page).to have_text("Edit")
+    expect(page).to have_link("Edit")
   end
+
+  it "has delete button" do
+    visit papers_path
+    expect(page).to have_link("Delete")
+end
+
+it "allows deleting the author" do
+    @paper = Paper.new(
+        title: 'hi',
+        venue:'venue',
+        year: 2
+    )
+    @paper.save
+    visit papers_path(@paper)
+    count_before = Paper.count
+    click_link("Delete")
+    expect(Paper.count).to eq count_before -1  
+end
 end
