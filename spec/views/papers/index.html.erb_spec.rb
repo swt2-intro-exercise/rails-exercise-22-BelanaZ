@@ -23,4 +23,9 @@ RSpec.describe "papers/index", type: :view do
     assert_select cell_selector, text: Regexp.new("Venue".to_s), count: 2
     assert_select cell_selector, text: Regexp.new(2.to_s), count: 2
   end
+
+  it "has Edit button" do
+    visit papers_path
+    expect(page).to have_text("Edit")
+  end
 end
