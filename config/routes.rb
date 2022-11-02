@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   get 'home/index'
 
-  resources :authors
+  resources :authors, :papers
 
 
   # You can have the root of your site routed with "root"
