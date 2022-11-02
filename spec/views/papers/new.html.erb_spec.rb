@@ -25,4 +25,13 @@ RSpec.describe "papers/new", type: :view do
       assert_select "input[name=?]", "paper[year]"
     end
   end
+
+  it "should display 'error' after invalid input" do
+    visit new_paper_path
+    page.fill_in 'paper[title]', with: ''
+    page.fill_in 'paper[venue]', with: 'Paris'
+    page.fill_in 'paper[year]', with: '1999'
+    find('input[type="submit"]').click
+    expect(page).to have_text 'error'
+  end
 end
