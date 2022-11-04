@@ -10,4 +10,12 @@ describe "New paper page", type: :model do
     expect(paper.venue).to eq(venue)
     expect(paper.year).to eq(year)    
   end
+
+  it "should have an empty list of authors" do
+    title = 'My paper'
+    venue = 'Mars'
+    year = 2002
+    paper = Paper.new(:title => title, :venue => venue, :year => year)
+    expect(paper.authors).to eq([])
+  end
 end
