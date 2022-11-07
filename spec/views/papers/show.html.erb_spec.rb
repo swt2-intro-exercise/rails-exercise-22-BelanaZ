@@ -15,4 +15,12 @@ RSpec.describe "papers/show", type: :view do
     expect(rendered).to match(/Venue/)
     expect(rendered).to match(/2/)
   end
+
+  it 'displays the full name of the author' do
+    @computing_paper = FactoryBot.create :paper
+    visit papers_path(@computing_paper)
+    @computing_paper.authors.each do |author|
+      expect(page).to have_text(author.name)
+  end
+  end
 end
