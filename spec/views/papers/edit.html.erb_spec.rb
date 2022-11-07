@@ -53,4 +53,9 @@ RSpec.describe "papers/edit", type: :view do
       paper.reload
       expect(paper.title).to eq(title)
   end
+
+  it "should allow the selection of authors" do
+    visit edit_paper_path(paper)
+    expect(page).to have_css('select[multiple]')
+  end
 end
