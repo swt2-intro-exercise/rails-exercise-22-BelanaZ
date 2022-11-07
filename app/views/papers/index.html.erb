@@ -5,6 +5,14 @@
 <div id="papers">
   <% @papers.each do |paper| %>
     <%= render paper %>
+
+      <p> 
+    <% paper.authors.each do |author| %>
+      <%= author.name %> 
+    <% end %>
+
+    </p>
+
     <p>
       <%= link_to "Show this paper", paper %>
     </p>
